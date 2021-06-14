@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:grocery/widgets/categories_tile.dart';
-import 'package:grocery/widgets/top_product_tile.dart';
+import 'package:Intellistore/widgets/categories_tile.dart';
+import 'package:Intellistore/widgets/top_product_tile.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -93,31 +93,97 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildCategoriesList() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        CategoriesTile(
-          assetPath: 'assets/images/bread.png',
-          color: Color(0xffFCE8A8),
-          title: 'Bakery',
+      List categoriesList = <Widget>[
+        FlatButton(
+          child: CategoriesTile(
+            assetPath: 'assets/images/bread.png',
+            color: Color(0xffFCE8A8),
+            title: 'Bakery',
+          ),
+          padding: EdgeInsets.all(0.0),
+          onPressed: (){
+            Navigator.pushNamed(context, '/item_screen');
+          },
         ),
-        CategoriesTile(
-          assetPath: 'assets/images/apple.png',
-          color: Color(0xffDFECF8),
-          title: 'Fruits',
+        FlatButton(
+          child: CategoriesTile(
+            assetPath: 'assets/images/apple.png',
+            color: Color(0xffDFECF8),
+            title: 'Fruits',
+          ),
+          padding: EdgeInsets.all(0.0),
+          onPressed: (){},
         ),
-        CategoriesTile(
-          assetPath: 'assets/images/vegetable.png',
-          color: Color(0xffE2F3C2),
-          title: 'Vegetables',
+        FlatButton(
+          child: CategoriesTile(
+            assetPath: 'assets/images/vegetable.png',
+            color: Color(0xffE2F3C2),
+            title: 'Vegetables',
+          ),
+          padding: EdgeInsets.all(0.0),
+          onPressed: (){},
         ),
-        CategoriesTile(
-          assetPath: 'assets/images/milk.png',
-          color: Color(0xffFFDBC5),
-          title: 'Drinks',
+        FlatButton(
+          child: CategoriesTile(
+            assetPath: 'assets/images/milk.png',
+            color: Color(0xffFFDBC5),
+            title: 'Drinks',
+          ),
+          padding: EdgeInsets.all(0.0),
+          onPressed: (){},
         ),
-      ],
-    );
+        FlatButton(
+          child: CategoriesTile(
+            assetPath: 'assets/images/bread.png',
+            color: Color(0xffFCE8A8),
+            title: 'Bakery',
+          ),
+          padding: EdgeInsets.all(0.0),
+          onPressed: (){},
+        ),
+        FlatButton(
+          child: CategoriesTile(
+            assetPath: 'assets/images/apple.png',
+            color: Color(0xffDFECF8),
+            title: 'Fruits',
+          ),
+          padding: EdgeInsets.all(0.0),
+          onPressed: (){},
+        ),
+        FlatButton(
+          child: CategoriesTile(
+            assetPath: 'assets/images/vegetable.png',
+            color: Color(0xffE2F3C2),
+            title: 'Vegetables',
+          ),
+          padding: EdgeInsets.all(0.0),
+          onPressed: (){},
+        ),
+        FlatButton(
+          child: CategoriesTile(
+            assetPath: 'assets/images/milk.png',
+            color: Color(0xffFFDBC5),
+            title: 'Drinks',
+          ),
+          padding: EdgeInsets.all(0.0),
+          onPressed: (){},
+        ),
+
+      ];
+
+      return Column(
+        children: <Widget>[
+          Container(
+            height: 102,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) => categoriesList[index],
+              separatorBuilder: (context, index) => SizedBox(width: 0),
+              itemCount: categoriesList.length,
+            ),
+          )
+        ],
+      );
   }
 
   Widget _buildTopProducts() {
@@ -157,20 +223,20 @@ class _HomePageState extends State<HomePage> {
       TopProductTile(
         assetPath: 'assets/images/kiwi.png',
         color: Color(0xffDFECF8),
-        price: '\$2.25',
+        price: 'Rs. 50',
         title: 'Kiwi Fruit',
       ),
       TopProductTile(
         color: Color(0xffF4DEF8),
         assetPath: 'assets/images/summer.png',
         title: 'Watermelon',
-        price: '\$1.50',
+        price: 'Rs. 50',
       ),
       TopProductTile(
         color: Color(0xffFFF2C5),
         assetPath: 'assets/images/strawberry.png',
         title: 'Strawberry',
-        price: '\$3.50',
+        price: 'Rs. 50',
       ),
     ];
 
@@ -193,14 +259,14 @@ class _HomePageState extends State<HomePage> {
     List<String> bottomNavigationBarOptions = [
       'Home',
       'Favorites',
-      'Notifications',
+      'QR code',
       'Profile'
     ];
 
     List<IconData> bottomNavigationBarIcons = [
       Icons.home,
       Icons.favorite_border,
-      Icons.notifications_none,
+      Icons.qr_code_rounded,
       Icons.person_outline
     ];
 
@@ -208,7 +274,7 @@ class _HomePageState extends State<HomePage> {
       height: 80,
       padding: EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
-          color: Color(0xff84CC83),
+          color: Colors.blue,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20), topRight: Radius.circular(20))),
       child: Row(
@@ -237,7 +303,7 @@ class _HomePageState extends State<HomePage> {
                       children: <Widget>[
                         Icon(
                           bottomNavigationBarIcons[index],
-                          color: Colors.green,
+                          color: Colors.blue,
                         ),
                         Text(
                           bottomNavigationBarOptions[index],

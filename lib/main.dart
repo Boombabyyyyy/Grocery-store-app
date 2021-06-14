@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:grocery/homepage.dart';
+import 'package:Intellistore/homepage.dart';
+import 'package:Intellistore/widgets/item_details.dart';
+import 'package:Intellistore/widgets/item_screen.dart';
 
 void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: HomePage()
-    );
-  }
+  runApp(MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/': (context) => HomePage(),
+        '/item_screen': (context) => Item_Screen(),
+        '/item_details': (context) => Item_Details(),
+      }
+  ));
 }
 
